@@ -214,16 +214,16 @@ function dreamrs_link_pages(){
 
 function dreamrs_social_icon_overwrite_by_flaticon( $social_icon ){
 	switch ( $social_icon ) {
-		case ($social_icon == 'fa fa-facebook' || $social_icon == 'fa fa-facebook-f'):
+		case ($social_icon == 'fa-brands fa-facebook' || $social_icon == 'fa-brands fa-facebook-f'):
 			$social_icon = 'flaticon-facebook';
 			break;
-		case ($social_icon == 'fa fa-twitter'):
+		case ($social_icon == 'fa-brands fa-twitter'):
 			$social_icon = 'flaticon-twitter';
 			break;
-		case ($social_icon == 'fa fa-skype'):
+		case ($social_icon == 'fa-brands fa-skype'):
 			$social_icon = 'flaticon-skype';
 			break;
-		case ($social_icon == 'fa fa-instagram'):
+		case ($social_icon == 'fa-brands fa-instagram'):
 			$social_icon = 'flaticon-instagram';
 			break;
 		
@@ -835,7 +835,7 @@ function dreamrs_portfolio_section( $proj_title, $proj_filter, $proj_order ){ ?>
 				foreach ( $categories as $category ) {
 					$active_class  = ( $i == 1 ) ? 'active' : '';
 					$area_selected = ( $i == 1 ) ? 'true' : 'false';
-					echo '<li><a class="'. $active_class .'" id="'. esc_attr( $category->slug ) .'-tab" data-toggle="tab" href="#'. esc_attr( $category->slug ) .'" role="tab" aria-controls="'. esc_attr( $category->slug ) .'" aria-selected="'. $area_selected .'">'. esc_html( $category->name ) .'</a></li>';
+					echo '<li><a class="'. $active_class .'" id="'. esc_attr( $category->slug ) .'-tab" data-bs-toggle="tab" href="#'. esc_attr( $category->slug ) .'" role="tab" aria-controls="'. esc_attr( $category->slug ) .'" aria-selected="'. $area_selected .'">'. esc_html( $category->name ) .'</a></li>';
 					$i++;
 				}
 			?>

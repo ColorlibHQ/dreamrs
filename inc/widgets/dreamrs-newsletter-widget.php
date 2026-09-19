@@ -55,7 +55,7 @@ class Dreamrs_newsletter_widget extends WP_Widget {
                     <input class="form-control placeholder hide-on-focus" name="EMAIL" placeholder="<?php esc_html_e( 'Your Email Address', 'dreamrs' ); ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" required="" type="email">
 
                     <div class="input-group-append">
-                        <button class="btn button email_icon newsletter-submit button-contactForm" type="submit"><i class="fa fa-paper-plane"></i></button>
+                        <button class="btn button email_icon newsletter-submit button-contactForm" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                     
                     <div style="position: absolute; left: -5000px;">
