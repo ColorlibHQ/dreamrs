@@ -14,6 +14,7 @@ function dreamrs_sl_enqueue_scripts() {
 
 	wp_localize_script( 'dreamrs-post-likes', 'simpleLikes', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'like'    => esc_html__( 'Like', 'dreamrs' ),
 		'unlike'  => esc_html__( 'Unlike', 'dreamrs' )
 	) );
 }
