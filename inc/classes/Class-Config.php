@@ -218,58 +218,23 @@
 					array(
 						'handler'		=> 'dreamrs-bootstrap',
 						'file' 			=> $jsPath.'bootstrap.min.js',
-						'dependency' 	=> array( 'jquery' ),
+						'dependency' 	=> array(),
 						'version' 		=> '5.3.8-4',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-magnific-popup-js',
-						'file' 			=> $jsPath.'jquery.magnific-popup.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-owl-carousel-js',
-						'file' 			=> $jsPath.'owl.carousel.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-jquery-easing-js',
-						'file' 			=> $jsPath.'jquery.easing.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-jquery-ajaxchimp-js',
-						'file' 			=> $jsPath.'jquery.ajaxchimp.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-slick-js',
-						'file' 			=> $jsPath.'slick.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 
 					array(
 						'handler'		=> 'dreamrs-ui-js',
-						'file' 			=> $jsPath.'colorlib-ui.js',
+						'file' 			=> $jsPath . ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? 'colorlib-ui.js' : 'colorlib-ui.min.js' ),
 						'dependency' 	=> array(),
-						'version' 		=> '2.1.1',
+						'version' 		=> '3.0.0',
 						'in_footer' 	=> true
 					),
 					array(
 						'handler'		=> 'dreamrs-custom',
 						'file' 			=> $jsPath.'custom.js',
-						'dependency' 	=> array( 'jquery', 'masonry', 'dreamrs-ui-js' ),
-						'version' 		=> $this->dreamrs_version . '-s1',
+						'dependency' 	=> array( 'masonry', 'dreamrs-ui-js' ),
+						'version' 		=> $this->dreamrs_version . '-s2',
 						'in_footer' 	=> true
 					),
 

@@ -207,16 +207,23 @@ class Dreamrs_Apartments extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            $(document).ready(function() {
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
                 //masonry js
-                $('.grid').masonry({
+                UI.masonry('.grid', {
                     itemSelector: '.grid-item',
                     columnWidth: '.grid-sizer',
                     percentPosition: true
                 });
-            });
-        })(jQuery);
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

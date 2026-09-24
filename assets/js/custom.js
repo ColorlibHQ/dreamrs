@@ -1,59 +1,74 @@
-(function ($) {
-  "use strict";
+/**
+ * Dreamrs front-end behaviour, without jQuery.
+ *
+ * The plugin calls keep the options they always had; ColorlibUI provides
+ * drop-in versions of Magnific Popup, Slick and AjaxChimp that build the same
+ * markup, so the theme's stylesheets apply unchanged. The grid uses
+ * WordPress core Masonry through UI.masonry.
+ */
+(function () {
+  'use strict';
+
+  var UI = window.ColorlibUI;
+  if (!UI) return;
 
   // menu fixed js code
-  $(window).scroll(function () {
-    var window_top = $(window).scrollTop() + 1;
-    if (window_top > 50) {
-      $('.main_menu').addClass('menu_fixed animated fadeInDown');
-    } else {
-      $('.main_menu').removeClass('menu_fixed animated fadeInDown');
-    }
+  UI.ready(function () {
+    var menus = UI.toElements('.main_menu');
+    window.addEventListener('scroll', function () {
+      var fixed = window.pageYOffset + 1 > 50;
+      menus.forEach(function (menu) {
+        if (fixed) {
+          menu.classList.add('menu_fixed', 'animated', 'fadeInDown');
+        } else {
+          menu.classList.remove('menu_fixed', 'animated', 'fadeInDown');
+        }
+      });
+    }, { passive: true });
   });
-  if (document.getElementById('default-select')) {
-    ColorlibUI.enhanceSelects('select');
-  }
 
-  // page-scroll
-  $('.page-scroll').bind('click', function (event) {
-    var $anchor = $(this);
-    var headerH = '80';
-    $('html, body').stop().animate({
-      scrollTop: $($anchor.attr('href')).offset().top - headerH + "px"
-    }, 1500, 'easeInOutExpo');
-    event.preventDefault();
+  // The old script enhanced the selects three times (once if #default-select
+  // existed, once behind a check that could never pass, and unconditionally
+  // on DOM ready); the unconditional call is the one that counted.
+  UI.enhanceSelects('select');
+
+  // page-scroll: smooth scroll to the link's target, 80px below the header.
+  UI.ready(function () {
+    var headerH = 80;
+    UI.toElements('.page-scroll').forEach(function (anchor) {
+      anchor.addEventListener('click', function (event) {
+        var target = null;
+        try {
+          target = document.querySelector(anchor.getAttribute('href'));
+        } catch (e) {
+          // Not a selector (a full URL, a bare "#"): leave the link alone.
+        }
+        if (!target) return;
+        UI.scrollToY(UI.offset(target).top - headerH, 1500);
+        event.preventDefault();
+      });
+    });
   });
 
   //counter up
-  ColorlibUI.counter('.counter', { time: 2000 });
+  UI.counter('.counter', { time: 2000 });
 
   //masonry js
-  $('.grid').masonry({
+  UI.masonry('.grid', {
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true
   });
+
   //gallery js
-  // $('.gallery').each(function () {
-  //   $(this).magnificPopup({
-  //     delegate: 'a',
-  //     type: 'image',
-  //     gallery: {
-  //       enabled: true
-  //     }
-  //   });
-  // });
+  UI.magnific('.img-gal', {
+    type: 'image',
+    gallery: {
+      enabled: true
+    }
+  });
 
-  if ($('.img-gal').length > 0) {
-    $('.img-gal').magnificPopup({
-      type: 'image',
-      gallery: {
-        enabled: true
-      }
-    });
-  }
-
-  $('.slider').slick({
+  UI.slick('.slider', {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -64,10 +79,10 @@
     autoplaySpeed: 3000,
     touchThreshold: 1000,
     pauseOnFocus: true,
-    dots: false,
+    dots: false
   });
 
-  $('.slider-nav-thumbnails').slick({
+  UI.slick('.slider-nav-thumbnails', {
     slidesToShow: 3,
     slidesToScroll: 1,
     asNavFor: '.slider',
@@ -78,7 +93,7 @@
     centerMode: true,
     autoplaySpeed: 3000,
     touchThreshold: 1000,
-    speed: 500,
+    speed: 500
 
     // responsive: [
     //   {
@@ -90,22 +105,6 @@
     // ]
   });
 
-  //UPDATED 
-
-  if (document.getElementById('default-select, .nice-select')) {
-    ColorlibUI.enhanceSelects('select');
-  }
-  $(document).ready(function () {
-    ColorlibUI.enhanceSelects('select');
-  });
-  //------- Mailchimp js --------//  
-  function mailChimp() {
-    $('#mc_embed_signup').find('form').ajaxChimp();
-  }
-  mailChimp();
-
-
-  
-
-
-}(jQuery));
+  //------- Mailchimp js --------//
+  UI.ajaxChimp('#mc_embed_signup form');
+}());

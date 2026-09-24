@@ -294,15 +294,13 @@ if ( !class_exists( 'Dreamrs_El_Widgets' ) ) {
             // googleapis js
             wp_register_script( 'maps-googleapis', '//maps.googleapis.com/maps/api/js?key='.esc_attr( $apiKey ) );
 
-            // ajaxchimp js
-            wp_enqueue_script( 'jquery-ajaxchimp', DREAMRS_DIR_ELEMENTOR . 'assets/js/jquery.ajaxchimp.min.js', array('jquery'), '1.0', true );
 
 
             // dreamrs map custom js
-            wp_register_script( 'dreamrs-map-custom', DREAMRS_DIR_ELEMENTOR . 'assets/js/map-custom.js', array('jquery'), '1.0', true );
+            wp_register_script( 'dreamrs-map-custom', DREAMRS_DIR_ELEMENTOR . 'assets/js/map-custom.js', array(), '1.0-s2', true );
 
             // dreamrs companion main js
-            wp_enqueue_script( 'dreamrs', DREAMRS_DIR_ELEMENTOR . 'assets/js/dreamrs-companion-main.js', array( 'jquery', 'jquery-ui-datepicker' ), '1.0', true );
+            wp_enqueue_script( 'dreamrs', DREAMRS_DIR_ELEMENTOR . 'assets/js/dreamrs-companion-main.js', array( 'dreamrs-ui-js' ), '1.0-s2', true );
 
 
             wp_localize_script( 'dreamrs', 'ajax_object',

@@ -10,7 +10,7 @@
 add_action( 'wp_enqueue_scripts', 'dreamrs_sl_enqueue_scripts' );
 function dreamrs_sl_enqueue_scripts() {
 
-	wp_enqueue_script( 'dreamrs-post-likes', DREAMRS_DIR_JS_URI . 'post-likes.js', array( 'jquery' ), '0.5', false );
+	wp_enqueue_script( 'dreamrs-post-likes', DREAMRS_DIR_JS_URI . 'post-likes.js', array( 'dreamrs-ui-js' ), '0.5-s2', true );
 
 	wp_localize_script( 'dreamrs-post-likes', 'simpleLikes', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),

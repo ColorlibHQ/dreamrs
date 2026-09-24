@@ -256,10 +256,11 @@ class Dreamrs_Testimonial extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            $(document).ready(function() {
-                
-                $('.slider').slick({
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                UI.slick('.slider', {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     arrows: false,
@@ -273,7 +274,7 @@ class Dreamrs_Testimonial extends Widget_Base {
                     dots: false,
                 });
 
-                $('.slider-nav-thumbnails').slick({
+                UI.slick('.slider-nav-thumbnails', {
                     slidesToShow: 3,
                     slidesToScroll: 1,
                     asNavFor: '.slider',
@@ -286,9 +287,13 @@ class Dreamrs_Testimonial extends Widget_Base {
                     touchThreshold: 1000,
                     speed: 500,
                 });
-
-            });
-        })(jQuery);
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }
