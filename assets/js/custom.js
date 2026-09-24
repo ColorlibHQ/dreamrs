@@ -11,7 +11,7 @@
     }
   });
   if (document.getElementById('default-select')) {
-    $('select').niceSelect();
+    ColorlibUI.enhanceSelects('select');
   }
 
   // page-scroll
@@ -25,10 +25,7 @@
   });
 
   //counter up
-  $('.counter').counterUp({
-    delay: 10,
-    time: 2000
-  });
+  ColorlibUI.counter('.counter', { time: 2000 });
 
   //masonry js
   $('.grid').masonry({
@@ -96,10 +93,10 @@
   //UPDATED 
 
   if (document.getElementById('default-select, .nice-select')) {
-    $('select').niceSelect();
+    ColorlibUI.enhanceSelects('select');
   }
   $(document).ready(function () {
-    $('select').niceSelect();
+    ColorlibUI.enhanceSelects('select');
   });
   //------- Mailchimp js --------//  
   function mailChimp() {
@@ -109,23 +106,6 @@
 
 
   
-  /*-------------------------------------
-  Instagram Photos
-  -------------------------------------*/
-  function cp_instagram_photos() {
-    $('.cp-instagram-photos').each(function(){
-        $.instagramFeed({
-            'username': $(this).data('username'),
-            'container': $(this),
-            'display_profile': false,
-            'display_biography': false,
-            'items': $(this).data('items'),
-            'margin': 0
-        });
-        console.log( $(this) );
-    });
 
-  }
-  cp_instagram_photos();
 
 }(jQuery));

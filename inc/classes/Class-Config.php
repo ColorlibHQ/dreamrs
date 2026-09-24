@@ -244,22 +244,8 @@
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'dreamrs-instagram-feed-js',
-						'file' 			=> $jsPath.'jquery.instagramFeed.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
 						'handler'		=> 'dreamrs-jquery-ajaxchimp-js',
 						'file' 			=> $jsPath.'jquery.ajaxchimp.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-jquery-nice-select-js',
-						'file' 			=> $jsPath.'jquery.nice-select.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
@@ -271,26 +257,19 @@
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
-					array(
-						'handler'		=> 'dreamrs-jquery-counterup-js',
-						'file' 			=> $jsPath.'jquery.counterup.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dreamrs-waypoints-js',
-						'file' 			=> $jsPath.'waypoints.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
 
+					array(
+						'handler'		=> 'dreamrs-ui-js',
+						'file' 			=> $jsPath.'colorlib-ui.js',
+						'dependency' 	=> array(),
+						'version' 		=> '2.1.1',
+						'in_footer' 	=> true
+					),
 					array(
 						'handler'		=> 'dreamrs-custom',
 						'file' 			=> $jsPath.'custom.js',
-						'dependency' 	=> array( 'jquery', 'masonry' ),
-						'version' 		=> $this->dreamrs_version,
+						'dependency' 	=> array( 'jquery', 'masonry', 'dreamrs-ui-js' ),
+						'version' 		=> $this->dreamrs_version . '-s1',
 						'in_footer' 	=> true
 					),
 
